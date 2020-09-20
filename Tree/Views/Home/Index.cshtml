@@ -1,0 +1,154 @@
+﻿@using Newtonsoft.Json;
+@{
+
+    ViewBag.Title = "Index";
+}
+
+<style>
+    ul ul {
+        display: none;
+    }
+</style>
+
+<h2>Index</h2>
+
+<div id="tree" class="just-padding"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    var Tree = @Html.Raw(JsonConvert.SerializeObject(ViewBag.Tree));
+    var DD = Tree.Data.data;
+
+  var str = '';
+    function Populate(DD)
+    {
+        str =   '<ul id="menu"  class="list" style="list-style-type:none;">';
+        DD.forEach(function (item) {
+
+            str = str + '<li class="well well-sm">'+ item.CategoryName+'</li>';
+            var abc = '';
+            if(item.Children != []){
+
+                str =  str + '' + abc +  '' +  Populate(item.Children);
+            }
+
+        });
+        str =  str + '</ul>';
+        return str ;
+    }
+
+    var tree1 =  Populate(DD);
+
+    document.getElementById("tree").innerHTML = tree1;
+
+
+    $(document).on('click', '.list > li ', function() {
+        $(this).next('ul').toggle();
+    });
+</script>
+
+
+
+@*@using Newtonsoft.Json;
+@{
+
+    ViewBag.Title = "Index";
+}
+
+<style>
+    ul ul {
+        display: none;
+    }
+</style>
+
+<h2>Index</h2>
+
+<div id="tree" class="just-padding"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    var Tree = @Html.Raw(JsonConvert.SerializeObject(ViewBag.Tree));
+    var DD = Tree.Data.data;
+
+  var str = '';
+    function Populate(DD)
+    {
+        str =   '<ul id="menu"  class="list" style="list-style-type:none;">';
+        DD.forEach(function (item) {
+
+            str = str + '<li class="well well-sm">'+ item.CategoryName+'</li>';
+            var abc = '';
+            if(item.Children != []){
+
+                str =  str + '' + abc +  '' +  Populate(item.Children);
+            }
+
+        });
+        str =  str + '</ul>';
+        return str ;
+    }
+
+    var tree1 =  Populate(DD);
+
+    document.getElementById("tree").innerHTML = tree1;
+
+
+    $(document).on('click', '.list > li ', function() {
+        $(this).next('ul').toggle();
+    });
+</script>*@
+
+
+@*@using Newtonsoft.Json;
+@{
+    
+    ViewBag.Title = "Index";
+}
+
+<style>
+    ul ul {
+  display: none;
+}
+</style>
+
+<h2 >Index</h2>
+
+<div id="tree"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    var Tree = @Html.Raw(JsonConvert.SerializeObject(ViewBag.Tree));
+    var DD = Tree.Data.data;
+   
+  var str = '';
+    function Populate(DD)
+    {
+        str =   '<ul id="menu"  class="list">';
+        DD.forEach(function (item) { 
+           
+            str = str + '<li>'+ item.CategoryName+'</li>';
+            var abc = '';
+            if(item.Children != []){
+               
+                str =  str + '' + abc +  '' +  Populate(item.Children);
+            }
+
+        }); 
+        str =  str + '</ul>';
+        return str ;
+    }
+    
+    var tree1 =  Populate(DD);
+
+    document.getElementById("tree").innerHTML = tree1;
+    
+
+    $(document).on('click', '.list > li ', function() {
+        $(this).next('ul').toggle();
+    });
+</script>*@ 
+
+
